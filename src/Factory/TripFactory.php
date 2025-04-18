@@ -10,18 +10,17 @@ use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
  */
 final class TripFactory extends PersistentProxyObjectFactory
 {
-    public static function class(): string
-    {
-        return Trip::class;
-    }
+	public static function class(): string
+	{
+		return Trip::class;
+	}
 
-    protected function defaults(): array|callable
-    {
-        return [
-            'name' => self::faker()->text(),
-            'slug' => self::faker()->unique()->slug(),
-            'tagLine' => self::faker()->text(),
-        ];
-    }
-
+	protected function defaults(): array|callable
+	{
+		return [
+			'name' => self::faker()->text(),
+			'slug' => self::faker()->unique()->slug(),
+			'tagLine' => self::faker()->text(),
+		];
+	}
 }

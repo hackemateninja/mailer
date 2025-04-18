@@ -11,21 +11,21 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BookingType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
-    {
-        $builder
-            ->add('name')
-            ->add('email', EmailType::class)
-            ->add('date', DateType::class, [
-                'input'  => 'datetime_immutable',
-            ])
-        ;
-    }
+	public function buildForm(FormBuilderInterface $builder, array $options): void
+	{
+		$builder
+			->add('name')
+			->add('email', EmailType::class)
+			->add('date', DateType::class, [
+				'input' => 'datetime_immutable',
+			])
+		;
+	}
 
-    public function configureOptions(OptionsResolver $resolver): void
-    {
-        $resolver->setDefaults([
-            'data_class' => BookingDto::class,
-        ]);
-    }
+	public function configureOptions(OptionsResolver $resolver): void
+	{
+		$resolver->setDefaults([
+			'data_class' => BookingDto::class,
+		]);
+	}
 }

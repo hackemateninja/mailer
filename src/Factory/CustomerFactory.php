@@ -10,16 +10,16 @@ use Zenstruck\Foundry\Persistence\PersistentProxyObjectFactory;
  */
 final class CustomerFactory extends PersistentProxyObjectFactory
 {
-    public static function class(): string
-    {
-        return Customer::class;
-    }
+	public static function class(): string
+	{
+		return Customer::class;
+	}
 
-    protected function defaults(): array|callable
-    {
-        return [
-            'email' => self::faker()->unique()->email(),
-            'name' => implode(' ', [self::faker()->firstName(), self::faker()->lastName()]),
-        ];
-    }
+	protected function defaults(): array|callable
+	{
+		return [
+			'email' => self::faker()->unique()->email(),
+			'name' => implode(' ', [self::faker()->firstName(), self::faker()->lastName()]),
+		];
+	}
 }

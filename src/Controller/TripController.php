@@ -16,34 +16,35 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class TripController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    public function index(TripRepository $trips): Response
-    {
-        return $this->render('trip/index.html.twig', [
-            'trips' => $trips->findAll(),
-        ]);
-    }
+	#[Route('/', name: 'home')]
+	public function index(TripRepository $trips): Response
+	{
+		return $this->render('trip/index.html.twig', [
+			'trips' => $trips->findAll(),
+		]);
+	}
 
-    #[Route('/trip/{slug:trip}', name: 'trip_show')]
-    public function show(Trip $trip, Request $request, CustomerRepository $customers, EntityManagerInterface $em): Response {
-        $form = $this->createForm(BookingType::class)->handleRequest($request);
+	#[Route('/trip/{slug:trip}', name: 'trip_show')]
+	public function show(Trip $trip, Request $request, CustomerRepository $customers, EntityManagerInterface $em): Response
+	{
+		$form = $this->createForm(BookingType::class)->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            /** @var BookingDto $dto */
-            $dto = $form->getData();
-            $customer = $customers->findOrCreate($dto->name, $dto->email);
-            $booking = new Booking($customer, $trip, $dto->date);
+		if ($form->isSubmitted() && $form->isValid()) {
+			/** @var BookingDto $dto */
+			$dto = $form->getData();
+			$customer = $customers->findOrCreate($dto->name, $dto->email);
+			$booking = new Booking($customer, $trip, $dto->date);
 
-            $em->persist($customer);
-            $em->persist($booking);
-            $em->flush();
+			$em->persist($customer);
+			$em->persist($booking);
+			$em->flush();
 
-            return $this->redirectToRoute('booking_show', ['uid' => $booking->getUid()]);
-        }
+			return $this->redirectToRoute('booking_show', ['uid' => $booking->getUid()]);
+		}
 
-        return $this->render('trip/show.html.twig', [
-            'trip' => $trip,
-            'form' => $form,
-        ]);
-    }
+		return $this->render('trip/show.html.twig', [
+			'trip' => $trip,
+			'form' => $form,
+		]);
+	}
 }

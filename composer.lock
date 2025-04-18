@@ -4,7 +4,7 @@
     "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
     "This file is @generated automatically"
   ],
-  "content-hash": "dd4292e69a71a6f9da1c7884317bc0b3",
+  "content-hash": "0ddc816c596770c015fa8c74d4c87b10",
   "packages": [
     {
       "name": "composer/semver",
@@ -1384,6 +1384,58 @@
         }
       ],
       "time": "2024-12-05T17:15:07+00:00"
+    },
+    {
+      "name": "php-cs-fixer/shim",
+      "version": "v3.75.0",
+      "source": {
+        "type": "git",
+        "url": "https://github.com/PHP-CS-Fixer/shim.git",
+        "reference": "eea219a577085bd13ff0cb644a422c20798316c7"
+      },
+      "dist": {
+        "type": "zip",
+        "url": "https://api.github.com/repos/PHP-CS-Fixer/shim/zipball/eea219a577085bd13ff0cb644a422c20798316c7",
+        "reference": "eea219a577085bd13ff0cb644a422c20798316c7",
+        "shasum": ""
+      },
+      "require": {
+        "ext-json": "*",
+        "ext-tokenizer": "*",
+        "php": "^7.4 || ^8.0"
+      },
+      "replace": {
+        "friendsofphp/php-cs-fixer": "self.version"
+      },
+      "suggest": {
+        "ext-dom": "For handling output formats in XML",
+        "ext-mbstring": "For handling non-UTF8 characters."
+      },
+      "bin": [
+        "php-cs-fixer",
+        "php-cs-fixer.phar"
+      ],
+      "type": "application",
+      "notification-url": "https://packagist.org/downloads/",
+      "license": [
+        "MIT"
+      ],
+      "authors": [
+        {
+          "name": "Fabien Potencier",
+          "email": "fabien@symfony.com"
+        },
+        {
+          "name": "Dariusz Rumiński",
+          "email": "dariusz.ruminski@gmail.com"
+        }
+      ],
+      "description": "A tool to automatically fix PHP code style",
+      "support": {
+        "issues": "https://github.com/PHP-CS-Fixer/shim/issues",
+        "source": "https://github.com/PHP-CS-Fixer/shim/tree/v3.75.0"
+      },
+      "time": "2025-03-31T18:45:02+00:00"
     },
     {
       "name": "psr/cache",
@@ -4328,7 +4380,7 @@
       ],
       "authors": [
         {
-          "name": "K\u00e9vin Dunglas",
+          "name": "Kévin Dunglas",
           "email": "dunglas@gmail.com"
         },
         {
@@ -5921,7 +5973,7 @@
       ],
       "authors": [
         {
-          "name": "Fran\u00e7ois Zaninotto"
+          "name": "François Zaninotto"
         }
       ],
       "description": "Faker is a PHP library that generates fake data for you.",
@@ -7728,7 +7780,7 @@
           "email": "fabien@symfony.com"
         },
         {
-          "name": "Jean-Fran\u00e7ois Simon",
+          "name": "Jean-François Simon",
           "email": "jeanfrancois.simon@sensiolabs.com"
         },
         {
@@ -8564,11 +8616,10 @@
   "prefer-stable": false,
   "prefer-lowest": false,
   "platform": {
-    "php": ">=8.2",
+    "php": ">=8.4",
     "ext-ctype": "*",
     "ext-iconv": "*"
   },
   "platform-dev": {},
-  "platform-overrides": {},
   "plugin-api-version": "2.6.0"
 }

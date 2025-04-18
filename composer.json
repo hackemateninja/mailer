@@ -9,6 +9,7 @@
     "doctrine/doctrine-bundle": "^2.13",
     "doctrine/doctrine-fixtures-bundle": "^3.6",
     "doctrine/orm": "^3.3",
+    "php-cs-fixer/shim": "^3.75",
     "symfony/asset": "7.2.*",
     "symfony/asset-mapper": "7.2.*",
     "symfony/console": "7.2.*",
@@ -79,6 +80,9 @@
     ],
     "post-update-cmd": [
       "@auto-scripts"
+    ],
+    "fix":[
+      "PHP_CS_FIXER_IGNORE_ENV=1 vendor/bin/php-cs-fixer fix"
     ]
   },
   "conflict": {

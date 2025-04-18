@@ -11,19 +11,19 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class CustomerRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Customer::class);
-    }
+	public function __construct(ManagerRegistry $registry)
+	{
+		parent::__construct($registry, Customer::class);
+	}
 
-    public function findOrCreate(string $name, string $email): Customer
-    {
-        if ($existing = $this->findOneBy(['email' => $email])) {
-            $existing->setName($name);
+	public function findOrCreate(string $name, string $email): Customer
+	{
+		if ($existing = $this->findOneBy(['email' => $email])) {
+			$existing->setName($name);
 
-            return $existing;
-        }
+			return $existing;
+		}
 
-        return new Customer($name, $email);
-    }
+		return new Customer($name, $email);
+	}
 }

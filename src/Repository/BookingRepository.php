@@ -12,40 +12,40 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class BookingRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
-    {
-        parent::__construct($registry, Booking::class);
-    }
+	public function __construct(ManagerRegistry $registry)
+	{
+		parent::__construct($registry, Booking::class);
+	}
 
-    /**
-     * @return Booking[]
-     */
-    public function findUpcomingFor(Customer $customer): array
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.customer = :customer')
-            ->andWhere('b.date >= :now')
-            ->setParameter('customer', $customer)
-            ->setParameter('now', new \DateTimeImmutable('now'))
-            ->orderBy('b.date', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+	/**
+	 * @return Booking[]
+	 */
+	public function findUpcomingFor(Customer $customer): array
+	{
+		return $this->createQueryBuilder('b')
+			->andWhere('b.customer = :customer')
+			->andWhere('b.date >= :now')
+			->setParameter('customer', $customer)
+			->setParameter('now', new \DateTimeImmutable('now'))
+			->orderBy('b.date', 'ASC')
+			->getQuery()
+			->getResult()
+		;
+	}
 
-    /**
-     * @return Booking[]
-     */
-    public function findPreviousFor(Customer $customer): array
-    {
-        return $this->createQueryBuilder('b')
-            ->andWhere('b.customer = :customer')
-            ->andWhere('b.date < :now')
-            ->setParameter('customer', $customer)
-            ->setParameter('now', new \DateTimeImmutable('now'))
-            ->orderBy('b.date', 'DESC')
-            ->getQuery()
-            ->getResult()
-        ;
-    }
+	/**
+	 * @return Booking[]
+	 */
+	public function findPreviousFor(Customer $customer): array
+	{
+		return $this->createQueryBuilder('b')
+			->andWhere('b.customer = :customer')
+			->andWhere('b.date < :now')
+			->setParameter('customer', $customer)
+			->setParameter('now', new \DateTimeImmutable('now'))
+			->orderBy('b.date', 'DESC')
+			->getQuery()
+			->getResult()
+		;
+	}
 }
