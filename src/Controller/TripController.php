@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class TripController extends AbstractController
@@ -30,7 +32,7 @@ final class TripController extends AbstractController
 		Request $request,
 		CustomerRepository $customers,
 		EntityManagerInterface $em,
-
+		MailerInterface $mailer,
 	): Response
 	{
 		$form = $this->createForm(BookingType::class)->handleRequest($request);
@@ -44,6 +46,14 @@ final class TripController extends AbstractController
 			$em->persist($customer);
 			$em->persist($booking);
 			$em->flush();
+			
+			$email = (new Email())
+				->from('info@universal-travel.com')
+				->to($customer->getEmail())
+				->subject('Booking Confirmation')
+				->text('Your booking has been confirmed');
+			
+			$mailer->send($email);
 
 			return $this->redirectToRoute('booking_show', ['uid' => $booking->getUid()]);
 		}
