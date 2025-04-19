@@ -1,7 +1,10 @@
+{% apply inline_css(source('@styles/email.css')) %}
 <html>
-<head></head>
+<head>
+
+</head>
 <body>
-<p>Hey {{ customer.name|split(' ')|first }},</p>
+<p class="text-red">Hey {{ customer.name|split(' ')|first }},</p>
 
 <p>Get ready for your trip to {{ trip.name }}!</p>
 
@@ -19,3 +22,4 @@
 </p>
 </body>
 </html>
+{% endapply %}
